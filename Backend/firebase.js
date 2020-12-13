@@ -1,5 +1,4 @@
 const firebase = require("firebase/app");
-const admin = require('firebase-admin')
 
 // Initialisation de Firebase avec notre apiKey du projet
 

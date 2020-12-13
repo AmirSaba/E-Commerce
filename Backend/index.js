@@ -1,12 +1,17 @@
 const express = require("express");
+const app = express();
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
-app = express();
+app.use(express.json());
+app.use(cors());
 
-app.get("/", async (req, res) => {
-     res.send("Hello World");
-});
+app.use("/SignUp", require("./Authentification/SignUp"));
 
-const PORT = 5000;
+
+
+
+const PORT = 5001;
 app.listen(PORT, () => {
-    console.log('App listening on port 5000!');
+    console.log('App listening on port 5001!');
 });
