@@ -1,13 +1,14 @@
 require("firebase/auth");
 const express = require("express");
 const router = express.Router();
-const Fb = require("../firebase");
+const Fb = require("./firebase");
 
 // Méthode addUser pour créer un nouveau utilisateur
 // Utilisation de la méthode createUserWithEmailAndPassword de firebase qui permet de faire une authentification par email et mot de passe
 
 addUser = (email, password) =>
   Fb.fb.auth().createUserWithEmailAndPassword(email, password);
+
 
 router.post("/Signup", async (req, res) => {
     const { email, password } = req.body;

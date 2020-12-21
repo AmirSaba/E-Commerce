@@ -5,6 +5,9 @@ import { auth } from "./firebase";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageHome from './Component/PageHome'
 
+import axios from "axios";
+
+
 
 
 class App extends Component {
@@ -21,8 +24,7 @@ class App extends Component {
         let emailVerified = CurrentUser.emailVerified;
         console.log(emailVerified);
         console.log("Auth_Changed", CurrentUser.email);
-
-        this.setState({ CurrentUser: "Gérant",EmailVerified : emailVerified });
+        this.setState({ CurrentUser: CurrentUser,EmailVerified : emailVerified });
       } else {
         this.setState({ CurrentUser });
         console.log("watt");
@@ -46,9 +48,9 @@ class App extends Component {
                 <Route
                   path="/PageHome"
                   exact
-                  component={PageHome}
-                />
-              )}
+                  component={() => <PageHome CurrentUser={CurrentUser}/>}
+                />  
+                 )}
              
             </Switch>
           </div>

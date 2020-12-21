@@ -64,9 +64,8 @@ class Signup extends React.Component {
                     ) {
                       const obj = {
                         email : this.state.email,
-                        password : this.state.MotDePasse
-                        
-                      }
+                        password : this.state.MotDePasse 
+                       }
                       // axios permet de faire la relation frontend backend
                       // dans cet exemple elle est utilisée pour le signup d'un nouveau utilisateur
                       // la fonction qui permet le signup est dans le backend

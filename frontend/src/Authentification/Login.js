@@ -118,6 +118,8 @@ function Login() {
                   alignItems: "center",
                 }}
               >
+                 <Link to="/PageHome">
+
                   <GoogleButton
                     type="dark"
                     onClick={() => {
@@ -145,6 +147,7 @@ function Login() {
                         });
                     }}
                   />
+                  </Link>
               </Form.Item>
 
               <Form.Item
