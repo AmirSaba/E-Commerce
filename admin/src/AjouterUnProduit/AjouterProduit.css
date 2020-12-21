@@ -1,0 +1,27 @@
+.AjouterProduit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.EnglobanteDesImages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.PourChaqueImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.PourChaqueImage img {
+  box-shadow: 0 5px 12px 0 rgba(0, 0, 0, 0.2), 0 9px 24px 0 rgba(0, 0, 0, 0.19);
+}
+.PourChaqueImage img:hover {
+  transform: scale(1.4, 1.4);
+}
+.TitreDeLaPage {
+  font-size: 200;
+}
