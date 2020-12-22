@@ -1,0 +1,75 @@
+.button {
+  background-color: rgb(224, 221, 255);
+  width: 150px;
+  height: 40px;
+  border: none;
+  font-size: 22px;
+  font-weight: 550;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: white;
+  text-align: center;
+  border-radius: 1em;
+  margin-left: 152px;
+
+  border: solid 0.05cm black;
+  color: black;
+
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #0026ff;
+}
+.button1:hover {
+  background-color: rgb(88, 74, 246);
+  color: white;
+}
+.buttonn {
+  width: 500px;
+  height: 40px;
+  border: none;
+  font-size: 22px;
+  font-weight: 550;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: white;
+  text-align: center;
+  color: black;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #494949;
+}
+.button2:hover {
+  background-color: rgb(88, 74, 246);
+  color: white;
+}
+.progress {
+  margin-top: 10px;
+  margin-left: 139px;
+  margin-bottom: 0px;
+}
+.SpanFile {
+  font-size: 27px;
+  font-weight: 500;
+  font-family: fantasy;
+  margin: 20px;
+}
+.SectionImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}

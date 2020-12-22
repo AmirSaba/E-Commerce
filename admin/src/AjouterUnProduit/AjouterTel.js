@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
 
+import UploadImage from "./UploadImage/UploadImage"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,8 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function AjouterTel() {
-  const [MarqueDuTel, setMarqueDuTel] = useState("");
-  const [NomDuTel, setNomDuTel] = useState("");
+  const [Marque, setMarque] = useState("");
+  const [Nom, setNom] = useState("");
+
+  let [ObjectToStoreImage , setObjectToStoreImage] = useState("");
+
 
   const [Prix, setPrix] = useState("");
   const [QuantiteStock, setQuantiteStock] = useState("");
@@ -59,8 +63,8 @@ export default function AjouterTel() {
   <div>
     <form className={classes.root} noValidate autoComplete="off">
      
-      <TextField id="outlined-basic" label="Marque Du Tel" variant="outlined" value ={MarqueDuTel} onChange ={(event)=>{setMarqueDuTel(event.target.value)}} />
-      <TextField id="outlined-basic" label="Nom Du Tel" variant="outlined" value ={NomDuTel} onChange ={(event)=>{setNomDuTel(event.target.value)}} />
+      <TextField id="outlined-basic" label="Marque Du Tel" variant="outlined" value ={Marque} onChange ={(event)=>{setMarque(event.target.value)}} />
+      <TextField id="outlined-basic" label="Nom Du Tel" variant="outlined" value ={Nom} onChange ={(event)=>{setNom(event.target.value)}} />
 
       
 
@@ -102,6 +106,19 @@ export default function AjouterTel() {
       </Button>
 
     </form>
+    {
+    <div 
+     onClick ={()=>{
+      const Object2 = {
+        "Produit" : "Phone",
+        "Marque" : Marque,
+        "Nom" : Nom
+      }
+      setObjectToStoreImage(Object2);
+    }}>
+    <UploadImage {...ObjectToStoreImage  } />
+    </div>
+    }
   </div>
    
   );

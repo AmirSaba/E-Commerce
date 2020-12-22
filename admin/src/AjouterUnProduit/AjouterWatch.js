@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
 
+import UploadImage from "./UploadImage/UploadImage"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,13 +28,16 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function AjouterWatch() {
-  const [MarqueWatch, setMarqueWatch] = useState("");
-  const [NomMontre, setNomMontre] = useState("");
+  let [Marque, setMarque] = useState("");
+  let [Nom, setNom] = useState("");
 
   const [Prix, setPrix] = useState("");
   const [QuantiteStock, setQuantiteStock] = useState("");
 
   const [Bracelet, setBracelet] = useState("");
+
+  let [ObjectToStoreImage , setObjectToStoreImage] = useState("");
+
 
   const [Type, setType] = useState('');
   const [open, setOpen] = useState(false);
@@ -59,8 +63,8 @@ export default function AjouterWatch() {
   <div>
     <form className={classes.root} noValidate autoComplete="off">
      
-      <TextField id="outlined-basic" label="Marque De la montre" variant="outlined" value ={MarqueWatch} onChange ={(event)=>{setMarqueWatch(event.target.value)}} />
-      <TextField id="outlined-basic" label="Nom Du la montre" variant="outlined" value ={NomMontre} onChange ={(event)=>{setNomMontre(event.target.value)}} />
+      <TextField id="outlined-basic" label="Marque De la montre" variant="outlined" value ={Marque} onChange ={(event)=>{setMarque(event.target.value)}} />
+      <TextField id="outlined-basic" label="Nom Du la montre" variant="outlined" value ={Nom} onChange ={(event)=>{setNom(event.target.value)}} />
 
       
 
@@ -100,6 +104,19 @@ export default function AjouterWatch() {
       </Button>
 
     </form>
+    {
+    <div 
+     onClick ={()=>{
+      const Object2 = {
+        "Produit" : "Watch",
+        "Marque" : Marque,
+        "Nom" : Nom
+      }
+      setObjectToStoreImage(Object2);
+    }}>
+    <UploadImage {...ObjectToStoreImage  } />
+    </div>
+    }
   </div>
    
   );

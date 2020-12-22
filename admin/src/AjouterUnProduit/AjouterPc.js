@@ -9,6 +9,8 @@ import Select from '@material-ui/core/Select';
 import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
 
+import UploadImage from "./UploadImage/UploadImage"
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,9 +29,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function AjouterPc() {
-  const [MarqueDuPc, setMarqueDuPc] = useState("");
-  const [NomDuPc, setNomDuPc] = useState("");
+  let [Marque, setMarque] = useState("");
+  let [Nom, setNom] = useState("");
   const [Stockage, setStockage] = useState("");
+  let [Produit , setProduit] = useState("Laptop");
+  
+  let [ObjectToStoreImage , setObjectToStoreImage] = useState("");
 
 
   const [Prix, setPrix] = useState("");
@@ -40,6 +45,7 @@ export default function AjouterPc() {
 
   const [Ram, setRam] = useState('');
   const [open2, setOpen2] = useState(false);
+
 
 
   const handleClose = () => {
@@ -72,8 +78,8 @@ export default function AjouterPc() {
   <div>
     <form className={classes.root} noValidate autoComplete="off">
      
-      <TextField id="outlined-basic" label="Marque Du Pc" variant="outlined" value ={MarqueDuPc} onChange ={(event)=>{setMarqueDuPc(event.target.value)}} />
-      <TextField id="outlined-basic" label="Nom Du Pc" variant="outlined" value ={NomDuPc} onChange ={(event)=>{setNomDuPc(event.target.value)}} />
+      <TextField id="outlined-basic" label="Marque Du Pc" variant="outlined" value ={Marque} onChange ={(event)=>{setMarque(event.target.value)}} />
+      <TextField id="outlined-basic" label="Nom Du Pc" variant="outlined" value ={Nom} onChange ={(event)=>{setNom(event.target.value)}} />
 
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-controlled-open-select-label">Génération du Pc</InputLabel>
@@ -120,19 +126,41 @@ export default function AjouterPc() {
 
       <TextField id="outlined-basic" label="Prix" type ="number" variant="outlined" value ={Prix} onChange ={(event)=>{ if (event.target.value >0) setPrix(event.target.value)}} />
       <TextField id="outlined-basic" label="Quantite Stock" type ="number"  min= "10" max="100" variant="outlined" value ={QuantiteStock} onChange ={(event)=>{ if (event.target.value >0) setQuantiteStock(event.target.value)}} />
-     
-
+      <div style={{ display : "flex", flexDirection : "row"}}>
+      </div>
       <Button
         variant="contained"
         color="primary"
         size="Normal"
         style ={{marginLeft : 60,marginTop : 30}}
         startIcon={<SaveIcon />}
+        onClick ={()=>{
+          const Object2 = {
+            "Produit" : "PC",
+            "Marque" : Marque,
+            "Nom" : Nom
+          }
+          setObjectToStoreImage(Object2);
+        }}
       >
         Save
       </Button>
 
     </form>
+    {
+    <div 
+     onClick ={()=>{
+      const Object2 = {
+        "Produit" : "Laptop",
+        "Marque" : Marque,
+        "Nom" : Nom
+      }
+      setObjectToStoreImage(Object2);
+    }}>
+    <UploadImage {...ObjectToStoreImage  } />
+    </div>
+    }
+
   </div>
    
   );
