@@ -9,7 +9,9 @@ import Select from '@material-ui/core/Select';
 import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
 
-import UploadImage from "./UploadImage/UploadImage"
+import UploadImage from "./UploadImage/UploadImage";
+
+import axios from "axios"
 
 
 
@@ -135,13 +137,21 @@ export default function AjouterPc() {
         style ={{marginLeft : 60,marginTop : 30}}
         startIcon={<SaveIcon />}
         onClick ={()=>{
-          const Object2 = {
-            "Produit" : "PC",
-            "Marque" : Marque,
-            "Nom" : Nom
-          }
-          setObjectToStoreImage(Object2);
-        }}
+          if ( Marque != "" && Nom !="" && Stockage !="" && QuantiteStock !="" && Ram != "" && GenerationDuPc != "" && Prix !=""){
+
+            const SendProduct = {
+              "Marque" : Marque,
+              "Nom" : Nom,
+              "GenerationDuPc" : GenerationDuPc,
+              "Ram" : Ram,
+              "Stockage" : Stockage,
+              "Prix" : Prix,
+              "QuantiteStock" :  QuantiteStock,
+            }
+            console.log (SendProduct);
+            axios.post("http://localhost:5002/AjouterLaptop/Ajout", SendProduct).then((res) => { })
+         
+        }}}
       >
         Save
       </Button>

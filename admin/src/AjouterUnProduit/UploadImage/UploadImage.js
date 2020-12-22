@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { storage } from "../../firebase";
 import "./ImageDo.css";
 
+
+
 class UploadImage extends Component {
   constructor(props) {
     super(props);
@@ -56,6 +58,7 @@ class UploadImage extends Component {
       
        () => {
           // Affichage de l'image uploader par l'admin
+        
           storage
 
             .ref(`images/${this.props.Produit}'/'${this.props.Marque}'/'${image.name}`)
