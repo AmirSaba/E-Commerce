@@ -9,7 +9,9 @@ import Select from '@material-ui/core/Select';
 import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
 
-import UploadImage from "./UploadImage/UploadImage"
+import UploadImage from "./UploadImage/UploadImage";
+
+import axios from "axios";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -101,6 +103,21 @@ export default function AjouterTel() {
         size="Normal"
         style ={{marginLeft : 60,marginTop : 30}}
         startIcon={<SaveIcon />}
+        onClick ={()=>{
+          if ( Marque != "" && Nom !="" && Stockage !="" && QuantiteStock !="" && Ram != ""  && Prix !=""){
+
+            const SendProduct = {
+              "Marque" : Marque,
+              "Nom" : Nom,
+              "Ram" : Ram,
+              "Stockage" : Stockage,
+              "Prix" : Prix,
+              "QuantiteStock" :  QuantiteStock,
+            }
+            console.log (SendProduct);
+            axios.post("http://localhost:5004/AjouterPhone/Ajout", SendProduct).then((res) => { })
+         
+        }}}
       >
         Save
       </Button>
