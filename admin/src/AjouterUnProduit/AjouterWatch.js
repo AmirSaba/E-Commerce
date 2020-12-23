@@ -11,6 +11,8 @@ import Button from '@material-ui/core/Button';
 
 import UploadImage from "./UploadImage/UploadImage"
 
+import axios from "axios";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,7 +87,7 @@ export default function AjouterWatch() {
           <MenuItem value={"Connectée"}>Connectée</MenuItem>
         </Select>
       </FormControl>
-      <TextField id="outlined-basic" label="Bracelet"  variant="outlined" value ={Bracelet} onChange ={(event)=>{ if (event.target.value >0) setBracelet(event.target.value)}} />
+      <TextField id="outlined-basic" label="Bracelet"  variant="outlined" value ={Bracelet} onChange ={(event)=>{ setBracelet(event.target.value)}} />
 
 
 
@@ -99,6 +101,21 @@ export default function AjouterWatch() {
         size="Normal"
         style ={{marginLeft : 60,marginTop : 30}}
         startIcon={<SaveIcon />}
+        onClick ={()=>{
+          if ( Marque != "" && Nom !="" && Bracelet != "" && QuantiteStock !="" && Type != ""  && Prix !=""){
+
+            const SendProduct = {
+              "Marque" : Marque,
+              "Nom" : Nom,
+              "Type" : Type,
+              "Bracelet" : Bracelet,
+              "Prix" : Prix,
+              "QuantiteStock" : QuantiteStock,
+            }
+            console.log (SendProduct);
+            axios.post("http://localhost:5005/AjouterWatch/Ajout", SendProduct).then((res) => { })
+         
+        }}}
       >
         Save
       </Button>
