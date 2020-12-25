@@ -135,27 +135,23 @@ export default function PageHome(props) {
               let Tab2 = Object.values(ValuesOfTab);
                let ValuesOfTab2 = Object.values(Tab2);
               
-              // console.log("helloo hhh ",ValuesOfTab2[index]);
                let KeysOfTab2 = Object.keys(ValuesOfTab2[index]);
                let LesValeurs = Object.values(ValuesOfTab2[index]);
-               //console.log(LesValeurs)
+
                if (element) {
                  return ( <div>
 
                   {
                     KeysOfTab2.map((element2,index)=>{
                       let LesVraiValeurs = Object.values(LesValeurs[index])
-                  //    console.log('Maintenant c bon',LesVraiValeurs)
-                 // console.log(Object.keys(LesVraiValeurs[index]))
-          //       console.log(Object.keys(LesValeurs[index]))
-                 let NomDuProduit = Object.keys(LesValeurs[index]);
+              
+                      let NomDuProduit = Object.keys(LesValeurs[index]);
  
                       return (<div>
                         
                         {LesVraiValeurs.map((element3,index)=>{
                           console.log(NomDuProduit[index])
 
-                           console.log('oui',element2);
                            let yui = {
                              NomDuProduit : NomDuProduit[index],
                              marque : element2,
@@ -167,9 +163,7 @@ export default function PageHome(props) {
                              
                              <Card element = {yui}/>
                            )
-                       //    console.log("t",t)
-                       
-                          //return card
+                     
                         })}
 
 

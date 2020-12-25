@@ -7,6 +7,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/AjouterWatch", require("./Watch"));
+app.use("/SupprimerWatch", require("./WatchDelete"));
+
 
 
 

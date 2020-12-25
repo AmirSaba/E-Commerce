@@ -6,7 +6,11 @@ const bodyParser = require("body-parser");
 app.use(express.json());
 app.use(cors());
 
+// Midelwares
+
 app.use("/AjouterPhone", require("./Phone"));
+app.use("/SupprimerPhone", require("./PhoneDelete"));
+
 
 
 

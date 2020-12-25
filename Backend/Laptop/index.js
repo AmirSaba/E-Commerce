@@ -7,6 +7,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/AjouterLaptop", require("./Laptop"));
+app.use("/SupprimerLaptop", require("./LaptopDelete"));
+
 
 
 

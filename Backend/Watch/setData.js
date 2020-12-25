@@ -13,5 +13,11 @@ module.exports = {
             QuantiteStock : req.QuantiteStock
         })
     
+    },
+    DeleteData : function (req, callback) {
+       
+        //req est la marque et le nom de la watch a supprimer
+        firebase.database().ref("Produits/Watch/"+req).set(null);
+    
     }
 }

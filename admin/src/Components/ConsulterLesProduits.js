@@ -14,9 +14,10 @@ export default function ConsulterLesProduits() {
     
      axios.get("http://localhost:5006/GetProducts/getList").then((res) => {
       console.log(res.data);
+    if ( res.data != null){
      let y = Object.keys(res.data);
      let x = Object.values(res.data);
-     console.log('x',x);
+     console.log('x',x);     
     // Enregistrement des tableau dans le state
     
   if ( y != null ){
@@ -26,11 +27,11 @@ export default function ConsulterLesProduits() {
       setBollen(true);
     
     
-     }
+     }}
     
      })
     
-  },[]);
+ },[]);
   
     return (
       <div className = "NotreDiv">
