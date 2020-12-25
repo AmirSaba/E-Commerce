@@ -3,7 +3,8 @@ import {auth} from '../firebase';
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Header from "./Header"
-import './PageHome.css'
+import './PageHome.css';
+import axios from "axios";
 
 // ************************************ //
 import { makeStyles } from '@material-ui/core/styles';
@@ -38,6 +39,10 @@ export default function PageHome(props) {
   const [Props,setProps] = useState(props); 
   const [NomUser,setNomUser] = useState("");
   const [Tab,setTab] = useState('');
+  const [KeysOfTab,setKeysOfTab] = useState('');
+  const [ValuesOfTab, setValuesOfTab] = useState('');
+  const [Bollen,setBollen] = useState(false);
+  const [TabESsai,setTabESsai] = useState(["1","2"]);
 
   // Première version de la page home de l'utilsateur, pour verifier le fonctionnement de l'authentification  $
   const classes = useStyles();
@@ -52,8 +57,31 @@ export default function PageHome(props) {
     
     str = str.replace(/\@.*/,'');
     console.log(str);
-    setNomUser(str);
-    setTab(["c"])
+    // Récupérer la liste des produits pour les afficher
+    // depuis le backend
+
+    axios.get("http://localhost:5006/GetProducts/getList").then((res) => {
+      console.log(res.data);
+      // On sépare les l'objet en 2 tableau
+      // le premier tableau "y" va contenir la catégorie du produit " Laptop , Watch , Phone"
+      let y = Object.keys(res.data);
+      // Le deuxième tableau "x" va contenir les détails de chaque produits 
+      let x = Object.values(res.data);
+      console.log('x',x);
+      // Enregistrement des tableau dans le state
+
+      if ( y != null ){
+
+      setKeysOfTab(y);
+      setValuesOfTab(x);
+      setBollen(true);
+
+      setNomUser(str);
+
+      }
+
+    })
+
      },[]);
   
   return (
@@ -101,19 +129,66 @@ export default function PageHome(props) {
         </div>
         <Header Name = {NomUser}/>
         <div className = "Card">
-        <Card/>
-        <Card/>
+          { 
+          
+            Bollen &&  KeysOfTab.map((element,index)=>{
+              let Tab2 = Object.values(ValuesOfTab);
+               let ValuesOfTab2 = Object.values(Tab2);
+              
+              // console.log("helloo hhh ",ValuesOfTab2[index]);
+               let KeysOfTab2 = Object.keys(ValuesOfTab2[index]);
+               let LesValeurs = Object.values(ValuesOfTab2[index]);
+               //console.log(LesValeurs)
+               if (element) {
+                 return ( <div>
 
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+                  {
+                    KeysOfTab2.map((element2,index)=>{
+                      let LesVraiValeurs = Object.values(LesValeurs[index])
+                  //    console.log('Maintenant c bon',LesVraiValeurs)
+                 // console.log(Object.keys(LesVraiValeurs[index]))
+          //       console.log(Object.keys(LesValeurs[index]))
+                 let NomDuProduit = Object.keys(LesValeurs[index]);
+ 
+                      return (<div>
+                        
+                        {LesVraiValeurs.map((element3,index)=>{
+                          console.log(NomDuProduit[index])
+
+                           console.log('oui',element2);
+                           let yui = {
+                             NomDuProduit : NomDuProduit[index],
+                             marque : element2,
+                             Caracteristique : element3
+
+                           }
+                           let t = KeysOfTab[index];
+                           return (
+                             
+                             <Card element = {yui}/>
+                           )
+                       //    console.log("t",t)
+                       
+                          //return card
+                        })}
+
+
+
+                         </div>)
+                    })
+                  }
+
+
+                 </div>)
+               }
+
+
+             
+
+            })
+          }
+          
+     
 
         </div>
        
@@ -124,3 +199,27 @@ export default function PageHome(props) {
 }
 
      //   <h1> You are in home page {NomUser}</h1>
+/*
+   Bollen &&  KeysOfTab.map((element,index)=>{
+            ////  console.log(element);
+              //console.log(ValuesOfTab[index])
+              let Tab2 = ValuesOfTab[index];
+
+             let KeysOfTab2 = Object.keys(Tab2);
+             let ValeurOfTab2 = Object.values(Tab2);
+          //   console.log(KeysOfTab2);
+          //   console.log(ValeurOfTab2);
+              KeysOfTab2.map((element2,index)=>{
+              //  console.log(ValeurOfTab2[index])
+                let Tab3 = ValeurOfTab2[index]
+                let KeysOfTab3 = Object.keys(Tab3);
+                let ValeurOfTab3 = Object.values(Tab3);
+                console.log("here we are",KeysOfTab3);
+                console.log('here we are to value',ValeurOfTab3);
+                                
+                element2 && <h1> hemmp</h1>  
+
+             })
+             
+            })
+            */

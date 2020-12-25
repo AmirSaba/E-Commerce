@@ -3,7 +3,6 @@ import { storage } from "../../firebase";
 import "./ImageDo.css";
 
 
-
 class UploadImage extends Component {
   constructor(props) {
     super(props);

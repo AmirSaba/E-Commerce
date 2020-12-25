@@ -9,6 +9,7 @@ module.exports = {
         // Enregistrement du produit dans la base de données
 
         firebase.database().ref("Produits/Phone/"+req.Marque+"/"+req.Nom).set({
+            Type : "Phone",
             Ram : req.Ram,
             Stockage : req.Stockage,
             Prix : req.Prix,

@@ -87,7 +87,7 @@ export default function AjouterWatch() {
           <MenuItem value={"Connectée"}>Connectée</MenuItem>
         </Select>
       </FormControl>
-      <TextField id="outlined-basic" label="Bracelet"  variant="outlined" value ={Bracelet} onChange ={(event)=>{ setBracelet(event.target.value)}} />
+      <TextField id="outlined-basic" label="Bracelet"  variant="outlined" value ={Bracelet} onChange ={(event)=>{setBracelet(event.target.value)}} />
 
 
 

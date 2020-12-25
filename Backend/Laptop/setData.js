@@ -7,6 +7,7 @@ module.exports = {
         console.log(NomDuPc);
 
         firebase.database().ref("Produits/Laptop/"+req.Marque+"/"+req.Nom).set({
+            Type : "Laptop",
             Generation : req.GenerationDuPc,
             Ram : req.Ram,
             Stockage : req.Stockage,
