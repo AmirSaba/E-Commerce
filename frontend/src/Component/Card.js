@@ -1,10 +1,11 @@
 import React, { useState,useEffect } from 'react';
 import { Card } from 'antd';
 import 'firebase/storage'
-import "./Card.css"
-
+import {FiShoppingCart} from  'react-icons/fi';
+import {FaShoppingCart} from  'react-icons/fa';
 
 import {storage} from "../firebase";
+import Column from 'antd/lib/table/Column';
 const { Meta } = Card;
 
 
@@ -15,6 +16,7 @@ export default function RecipeReviewCard(props) {
     const [Phone,setPhone] = useState(false);    
     const [Watch,setWatch] = useState(false);   
     const [UrlPhoto,setUrlPhoto] = useState('');
+    const [IsPanier, setIsPanier] = useState(false);
 
 
 useEffect(()=>{
@@ -51,9 +53,25 @@ useEffect(()=>{
           style={{ width: 350, borderRadius : "5",border :"solid 1px",margin : 30,marginTop : 90 }}
            cover={<img alt="example"   src={UrlPhoto} />}
         >
+           <div style ={{ display : 'flex', flexDirection : 'row'}} >
+          <div>
           <text> {props.element.NomDuProduit}</text>
-          <text> {props.element.marque}</text>
-
+          <br/>
+          <text> {props.element.marque}</text>  
+          </div>
+          {
+            !IsPanier &&
+          <button style = {{marginLeft : 200,backgroundColor : "white", width : 60,fontSize :20}} onClick ={()=>{
+            setIsPanier(true);
+          }}> <FiShoppingCart/></button>
+          }
+          {
+            IsPanier &&
+            <button style = {{marginLeft : 200,backgroundColor : "white",width : 60, fontSize :20}} onClick ={()=>{
+              setIsPanier(false);
+            }}> <FaShoppingCart/></button>
+          }
+        </div>
       
       
         </Card>
@@ -67,9 +85,15 @@ useEffect(()=>{
           hoverable
           style={{ width: 350,borderRadius : "5",border :"solid 1px",margin : 30,marginTop : 90 }}
           cover={<img alt="example" src={UrlPhoto} />}
-        >
+        > 
+        <div >
+          <div>
           <text> {props.element.NomDuProduit}</text>
-          <text> {props.element.marque}</text>      
+          <br/>
+          <text> {props.element.marque}</text>  
+          </div>
+        </div>
+              
       
         </Card>
           

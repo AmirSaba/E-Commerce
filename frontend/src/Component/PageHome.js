@@ -64,13 +64,13 @@ export default function PageHome(props) {
       console.log(res.data);
       // On sépare les l'objet en 2 tableau
       // le premier tableau "y" va contenir la catégorie du produit " Laptop , Watch , Phone"
+     if (res.data != null){
       let y = Object.keys(res.data);
       // Le deuxième tableau "x" va contenir les détails de chaque produits 
       let x = Object.values(res.data);
       console.log('x',x);
       // Enregistrement des tableau dans le state
-
-      if ( y != null ){
+     
 
       setKeysOfTab(y);
       setValuesOfTab(x);
@@ -78,7 +78,7 @@ export default function PageHome(props) {
 
       setNomUser(str);
 
-      }
+     }
 
     })
 
