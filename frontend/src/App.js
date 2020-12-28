@@ -7,6 +7,12 @@ import PageHome from './Component/PageHome'
 
 import axios from "axios";
 
+// Le Provider va se charger de distribuer notre store globale sur toute l'application
+import { Provider } from "react-redux";
+import Store from "./Redux/Store/ConfigureStore"
+import Panier from "./Component/Panier";
+
+
 
 
 
@@ -37,6 +43,7 @@ class App extends Component {
     let { EmailVerified } = this.state;
 
     return (
+      <Provider store={Store}>
         <Router>
           <div>
             <Switch>
@@ -51,10 +58,18 @@ class App extends Component {
                   component={() => <PageHome CurrentUser={CurrentUser}/>}
                 />  
                  )}
+               {(CurrentUser && EmailVerified) && (
+                <Route
+                  path="/Panier"
+                  exact
+                  component={() => <Panier/>}
+                />  
+                 )}
              
             </Switch>
           </div>
         </Router>
+        </Provider>
     );
   }
 }

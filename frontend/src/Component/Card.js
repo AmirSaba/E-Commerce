@@ -6,11 +6,15 @@ import {FaShoppingCart} from  'react-icons/fa';
 
 import {storage} from "../firebase";
 import Column from 'antd/lib/table/Column';
+
+import { connect } from "react-redux";
+import Panier from './Panier'
+
 const { Meta } = Card;
 
 
 
-export default function RecipeReviewCard(props) {
+ function RecipeReviewCard(props) {
     const [Props,setProps] = useState(props); 
     const [Laptop,setLaptop] = useState(false);   
     const [Phone,setPhone] = useState(false);    
@@ -63,12 +67,24 @@ useEffect(()=>{
             !IsPanier &&
           <button style = {{marginLeft : 200,backgroundColor : "white", width : 60,fontSize :20}} onClick ={()=>{
             setIsPanier(true);
+            
+            const action = {
+              type: "AjouterAuPanier",
+              value: Props.element,
+            };
+            Props.dispatch(action);
+            console.log(Props)
           }}> <FiShoppingCart/></button>
           }
           {
             IsPanier &&
             <button style = {{marginLeft : 200,backgroundColor : "white",width : 60, fontSize :20}} onClick ={()=>{
               setIsPanier(false);
+              const action = {
+                type: "AjouterAuPanier",
+                value: Props.element,
+              };
+              Props.dispatch(action);
             }}> <FaShoppingCart/></button>
           }
         </div>
@@ -118,3 +134,10 @@ useEffect(()=>{
   
     );
 }
+
+// On a connecter le state globale au props de RecipeReviewCard
+
+const mapStateToProps = (state) => {
+  return state;
+};
+export default connect(mapStateToProps)(RecipeReviewCard);

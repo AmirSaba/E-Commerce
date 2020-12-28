@@ -86,7 +86,11 @@ export default function PageHome(props) {
   
   return (
     <div className = "DivP">
+       <Link to = "Panier">
+        <button style = {{width : 100,height : 100, marginTop : 90}}> Panier</button>
+        </Link>
         <div className ="List">
+
           <div className ="LaVraiListe">
           <List
       component="nav"
@@ -127,6 +131,7 @@ export default function PageHome(props) {
          </div>
 
         </div>
+
         <Header Name = {NomUser}/>
         <div className = "Card">
           { 
