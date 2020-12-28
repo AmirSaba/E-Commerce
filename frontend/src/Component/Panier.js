@@ -73,6 +73,8 @@ console.log(this.props);
 
                 console.log(ObjectDeReservation)
                 axios.post("http://localhost:5010/AjouterCommande/Ajout", ObjectDeReservation).then((res) => { })
+                axios.post("http://localhost:5011/SendMail/SendMail", ObjectDeReservation).then((res) => { })
+
 
 
             }}> Commander </button>           
