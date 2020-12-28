@@ -6,14 +6,14 @@ const bodyParser = require("body-parser");
 app.use(express.json());
 app.use(cors());
 
-app.use("/AjouterLaptop", require("./Laptop"));
-app.use("/SupprimerLaptop", require("./LaptopDelete"));
+app.use("/AjouterCommande", require("./Commande"));
 
 
 
 
 
-const PORT = 5009;
+
+const PORT = 5010;
 app.listen(PORT, () => {
-    console.log('App listening on port 5002!');
+    console.log('App listening on port 5010!');
 });

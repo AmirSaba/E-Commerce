@@ -24,7 +24,14 @@ const { Meta } = Card;
 
 
 useEffect(()=>{
+ console.log(Props.ElementDuPanier);
+ let TableauDeVerification = Props.ElementDuPanier;
+     TableauDeVerification.map((element)=>{
+      if ( element === Props.element.NomDuProduit){
+        setIsPanier(true)
+      }
 
+     })
  let x = Props.element.Caracteristique.Type;
  if (x === "Laptop")
  setLaptop(true);

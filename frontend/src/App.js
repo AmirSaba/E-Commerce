@@ -62,7 +62,7 @@ class App extends Component {
                 <Route
                   path="/Panier"
                   exact
-                  component={() => <Panier/>}
+                  component={() => <Panier CurrentUser={CurrentUser}/>}
                 />  
                  )}
              
