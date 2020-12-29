@@ -1,25 +1,18 @@
 .Card {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
+  flex-direction: row;
+  display: flex;
   margin-top: 150px;
 }
+
 .List {
   display: flex;
   align-items: flex-start;
-  width: 500px;
+  width: 220px;
   margin-top: 0%;
   margin-left: 50px;
 }
 .DivP {
   display: flex;
   flex-direction: row;
-}
-.LaVraiListe {
-  margin-top: 300px;
-  position: fixed;
-  width: 350px;
-  box-shadow: 1px 1px 0px;
 }

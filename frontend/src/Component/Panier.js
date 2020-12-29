@@ -18,7 +18,8 @@ constructor(props) {
         Elements : this.props.ElementDuPanier,
         Quantité : [],
         MarqueDesElements : [""],
-        a :""
+        a :"",
+        send : true
     
     };
     
@@ -34,7 +35,7 @@ console.log(this.props);
       <div style  = {{display: "flex", flexDirection :'column' }} >
        <Header/>
        <div style ={{display : 'flex', justifyContent : 'center' , marginTop : 100, marginBottom : 100}}>
-       <h1 > Votre Panier</h1>
+       <h1 > <b><em>Votre Panier</em></b></h1>
        </div>
        <div className = "PanierContent">
            { this.state.Elements.map ((element,index) =>{
@@ -44,7 +45,7 @@ console.log(this.props);
                return (
                 <div className= "DivPanierEnglobante">
                 <div style = {{ display : "flex", flexDirection : "row"}}>
-                <h1 style = {{marginRight : 40 , width : 200 }}>{element}</h1>
+                <h1 style = {{marginRight : 40 , width : 400 , color :'#002A6F' }}> <b> <em>Produit</em></b> : {zz} {element}</h1>
 
                 <TextField id="outlined-basic" label="Quantité" type ="number" variant="outlined" InputProps={{ inputProps: { min: 0, max: y} }} style ={{ width : 150}}
                 value = {this.state.Quantité[index]}
@@ -72,13 +73,34 @@ console.log(this.props);
                 }
 
                 console.log(ObjectDeReservation)
+
+                this.state.Quantité.map((element)=>{
+
+                    if (element === 0 )
+                    {
+                        this.setState({send : false})
+                    }
+                })
+                if (this.state.Quantité.length !== this.props.ElementDuPanier.length)
+                {
+                    this.setState({send : false})
+                    console.log(this.state.send)
+
+                }
+                else { this.setState({send : true})}
+                if (this.state.send === true){
                 axios.post("http://localhost:5010/AjouterCommande/Ajout", ObjectDeReservation).then((res) => { })
                 axios.post("http://localhost:5011/SendMail/SendMail", ObjectDeReservation).then((res) => { })
-
+            
+                console.log('yes');
+                }
+                else { console.log('one is null or empty')}
 
 
             }}> Commander </button>           
-
+            {
+                !this.state.send && <text style = {{color : 'red'}}> veuillez entrer un nombre valid </text>
+            }
             </div>
         </div>
       </div>

@@ -113,7 +113,7 @@ export default function AjouterWatch() {
               "QuantiteStock" : QuantiteStock,
             }
             console.log (SendProduct);
-            axios.post("http://localhost:5005/AjouterWatch/Ajout", SendProduct).then((res) => { })
+            axios.post("http://localhost:5012/AjouterWatch/Ajout", SendProduct).then((res) => { })
          
         }}}
       >

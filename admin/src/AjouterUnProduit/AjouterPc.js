@@ -149,7 +149,7 @@ export default function AjouterPc() {
               "QuantiteStock" :  QuantiteStock,
             }
             console.log (SendProduct);
-            axios.post("http://localhost:5002/AjouterLaptop/Ajout", SendProduct).then((res) => { })
+            axios.post("http://localhost:5009/AjouterLaptop/Ajout", SendProduct).then((res) => { })
          
         }}}
       >

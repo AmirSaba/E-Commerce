@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -11,6 +13,9 @@ import Container from '@material-ui/core/Container';
 import Fab from '@material-ui/core/Fab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Zoom from '@material-ui/core/Zoom';
+import {AiOutlinePoweroff} from "react-icons/ai"
+import {auth} from '../firebase';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,7 +71,11 @@ export default function BackToTop(props) {
       <CssBaseline />
       <AppBar>
         <Toolbar>
-          <Typography variant="h6">Scroll to see button</Typography>
+          <Typography variant="h6">  
+            <text style = {{ position :"absolute" , right : 120 , top : 12 , color : "white" , fontSize : 25}} > <b>Logout</b></text>
+          <Link to = "">
+        <button style = {{width : 80,height : 50 ,fontSize : 20, marginLeft : 30,backgroundColor : "white" , color : 'blue', position :"absolute" , right : 20 , top : 5}} onClick ={()=>{auth.signOut()}}> <AiOutlinePoweroff/> </button>
+        </Link></Typography>
         </Toolbar>
       </AppBar>
       <Toolbar id="back-to-top-anchor" />

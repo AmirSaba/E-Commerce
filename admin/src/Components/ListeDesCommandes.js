@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import axios from "axios";
 import { List, Avatar } from 'antd';
+import "./ListeDesCommandes.css"
+import Table2 from "./Table"
 
 // *************************************************//
 
@@ -26,20 +28,48 @@ componentDidMount(){
 }
     render() { 
         return ( 
-            <div>
+          <div className = "englobantepage">
+            <h1> La liste des commandes </h1>
+            <div className = "EnglobanteListeDesCommandes">
               
-           
               {
               this.state.tab.map((element)=>{
                 return(
-                  <div style = {{display :'flex',flexDirection : 'row'}}>
+                  <Table2 data = {element}/>
+
+                )
+
+              })
+            }
+                
+
+
+            </div>
+            </div>
+
+
+
+        );
+    }
+}
+ 
+export default ListeDesCommandes;
+
+/*
+    return ( 
+            <div className = "EnglobanteListeDesCommandes">
+              
+              {
+              this.state.tab.map((element)=>{
+                return(
+                  <div className = "englobanteDesElements">
                   <h1> {element.Email}</h1>
                   { element.MarqueDesProduits.map((element2,index)=>{
                       return(
-                    <div style = {{ display : 'flex',flexDirection : 'row', padding : 20}}>
-                      <h1> {element2}</h1>
-                      <h2> {element.ProduitsCommander[index]}</h2>
-                      <h2> {element.QuantiteCommander[index]}</h2>
+                    <div className = "englobanteDesElements2">
+                      <h1 style  = {{ marginLeft : 20}}> {element2}</h1>
+                      <h1 style  = {{ marginLeft : 20}}> {element.ProduitsCommander[index]}</h1>
+                      <h1 style  = {{ marginLeft : 20}}> {element.QuantiteCommander[index]}</h1>
                     
                      </div> 
                       )
@@ -62,8 +92,5 @@ componentDidMount(){
 
 
         );
-    }
-}
- 
-export default ListeDesCommandes;
+        */
 

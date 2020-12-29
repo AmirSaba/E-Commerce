@@ -5,21 +5,13 @@ import Card from "./Card";
 import Header from "./Header"
 import './PageHome.css';
 import axios from "axios";
+import {AiOutlinePoweroff} from "react-icons/ai"
 
 // ************************************ //
 import { makeStyles } from '@material-ui/core/styles';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
+import {FaShoppingBasket} from  'react-icons/fa';
+import Column from 'antd/lib/table/Column';
+
 
 // ************************************ //
 const useStyles = makeStyles((theme) => ({
@@ -86,53 +78,20 @@ export default function PageHome(props) {
   
   return (
     <div className = "DivP">
-       <Link to = "Panier">
-        <button style = {{width : 100,height : 100, marginTop : 90}}> Panier</button>
+      
+         <Link to = "Panier">
+        <button style = {{width : 100,height : 100, marginTop : 90 ,fontSize : 50, marginLeft : 30,backgroundColor : "white"}}> <FaShoppingBasket/> </button>
         </Link>
+       
         <div className ="List">
 
           <div className ="LaVraiListe">
-          <List
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-
-      className={classes.root}
-    >
-      <ListItem button>
-        <ListItemIcon>
-          <SendIcon />
-        </ListItemIcon>
-        <ListItemText primary="Sent mail" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Drafts" />
-      </ListItem>
-      <ListItem button onClick={handleClick}>
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary="Inbox" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
-        </List>
-      </Collapse>
-    </List>
+     
          </div>
 
         </div>
 
-        <Header Name = {NomUser}/>
+        <Header CurrentUser = {Props}/>
         <div className = "Card">
           { 
           
@@ -144,7 +103,8 @@ export default function PageHome(props) {
                let LesValeurs = Object.values(ValuesOfTab2[index]);
 
                if (element) {
-                 return ( <div>
+                 return ( 
+                 <div style={{ display : "flex", flexDirection : 'row'}}>
 
                   {
                     KeysOfTab2.map((element2,index)=>{
@@ -152,7 +112,8 @@ export default function PageHome(props) {
               
                       let NomDuProduit = Object.keys(LesValeurs[index]);
  
-                      return (<div>
+                      return (
+                      <div>
                         
                         {LesVraiValeurs.map((element3,index)=>{
                           console.log(NomDuProduit[index])
@@ -196,29 +157,3 @@ export default function PageHome(props) {
     </div>
   );
 }
-
-     //   <h1> You are in home page {NomUser}</h1>
-/*
-   Bollen &&  KeysOfTab.map((element,index)=>{
-            ////  console.log(element);
-              //console.log(ValuesOfTab[index])
-              let Tab2 = ValuesOfTab[index];
-
-             let KeysOfTab2 = Object.keys(Tab2);
-             let ValeurOfTab2 = Object.values(Tab2);
-          //   console.log(KeysOfTab2);
-          //   console.log(ValeurOfTab2);
-              KeysOfTab2.map((element2,index)=>{
-              //  console.log(ValeurOfTab2[index])
-                let Tab3 = ValeurOfTab2[index]
-                let KeysOfTab3 = Object.keys(Tab3);
-                let ValeurOfTab3 = Object.values(Tab3);
-                console.log("here we are",KeysOfTab3);
-                console.log('here we are to value',ValeurOfTab3);
-                                
-                element2 && <h1> hemmp</h1>  
-
-             })
-             
-            })
-            */

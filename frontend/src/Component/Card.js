@@ -41,12 +41,24 @@ useEffect(()=>{
  setWatch(true)
 
  
-{storage
+{
+  storage
  .ref(`images/${Props.element.Caracteristique.Type+"'/'"}${Props.element.marque+"'/'"}${Props.element.NomDuProduit+".jpg"}`)
     .getDownloadURL()
     .then((url) => {
-      setUrlPhoto(url);
+      if (url !== null){
+      setUrlPhoto(url);}
+
     });
+  
+    storage
+    .ref(`images/${Props.element.Caracteristique.Type+"'/'"}${Props.element.marque+"'/'"}${Props.element.NomDuProduit+".png"}`)
+       .getDownloadURL()
+       .then((url) => {
+         if (url !== null){
+         setUrlPhoto(url);}
+         
+       });
 
 
 }
@@ -61,18 +73,25 @@ useEffect(()=>{
           Laptop && 
           <Card
           hoverable
-          style={{ width: 350, borderRadius : "5",border :"solid 1px",margin : 30,marginTop : 90 }}
-           cover={<img alt="example"   src={UrlPhoto} />}
+          style={{ width: 432,height : 550, borderRadius : "5",border :"solid 1px",margin : 30,marginTop : 90 }}
+           cover={<img alt="example"  style = {{width : 432 , height : 350}} src={UrlPhoto} />}
         >
-           <div style ={{ display : 'flex', flexDirection : 'row'}} >
-          <div>
-          <text> {props.element.NomDuProduit}</text>
+           <div style ={{ display : 'flex', flexDirection : 'row' }} >
+          <div style = {{ bottom : 10}}>
+          <text style ={{fontSize : 20 , color :'#002A6F'}}> <b>{props.element.marque}</b></text> 
           <br/>
-          <text> {props.element.marque}</text>  
+          <text style ={{fontSize : 20,color :'#002A6F'}}> <b> <em>{props.element.NomDuProduit}</em></b></text>
+ 
+          <br/>
+          <text style ={{fontSize : 17}}> <b>Géneration : {props.element.Caracteristique.Generation}</b></text>  
+          <br/>
+          <text style ={{fontSize : 17}}> <b>Ram : {props.element.Caracteristique.Ram} Go</b></text> 
+          <br/>
+          <text style ={{fontSize : 17}}> <b>Prix : {props.element.Caracteristique.Prix} E</b></text>   
           </div>
           {
             !IsPanier &&
-          <button style = {{marginLeft : 200,backgroundColor : "white", width : 60,fontSize :20}} onClick ={()=>{
+          <button style = {{marginLeft : 200,backgroundColor : "white", width : 60,fontSize :40 , width : 60, height : 75}} onClick ={()=>{
             setIsPanier(true);
             
             const action = {
@@ -85,7 +104,7 @@ useEffect(()=>{
           }
           {
             IsPanier &&
-            <button style = {{marginLeft : 200,backgroundColor : "white",width : 60, fontSize :20}} onClick ={()=>{
+            <button style = {{marginLeft : 200,backgroundColor : "white",width : 60, fontSize :40 , width : 60, height : 75}} onClick ={()=>{
               setIsPanier(false);
               const action = {
                 type: "AjouterAuPanier",
@@ -106,15 +125,46 @@ useEffect(()=>{
           Phone && 
           <Card
           hoverable
-          style={{ width: 350,borderRadius : "5",border :"solid 1px",margin : 30,marginTop : 90 }}
-          cover={<img alt="example" src={UrlPhoto} />}
+          style={{ width: 433, height : 550,borderRadius : "5",border :"solid 1px",margin : 30,marginTop : 90 }}
+          cover={<img alt="example" style = {{width : 433 , height : 350}} src={UrlPhoto} />}
         > 
-        <div >
-          <div>
-          <text> {props.element.NomDuProduit}</text>
+        <div style ={{ display : 'flex', flexDirection : 'row' }}>
+          <div style ={{bottom : 10}}>
+          <text style ={{fontSize : 20 , color :'#002A6F'}}> <b>{props.element.marque}</b></text> 
           <br/>
-          <text> {props.element.marque}</text>  
+          <text style ={{fontSize : 20,color :'#002A6F'}}> <b> <em>{props.element.NomDuProduit}</em></b></text> 
+          <br/>
+          <text style ={{fontSize : 17}}> <b>Stockage : {props.element.Caracteristique.Stockage} </b></text>  
+          <br/>
+          <text style ={{fontSize : 17}}> <b>Ram : {props.element.Caracteristique.Ram} Go</b></text>  
+          <br/>
+          <text style ={{fontSize : 17}}> <b>Prix : {props.element.Caracteristique.Prix} E</b></text>  
+
           </div>
+          {
+            !IsPanier &&
+          <button style = {{marginLeft : 200,backgroundColor : "white", width : 60,fontSize :40 , width : 60, height : 75}} onClick ={()=>{
+            setIsPanier(true);
+            
+            const action = {
+              type: "AjouterAuPanier",
+              value: Props.element,
+            };
+            Props.dispatch(action);
+            console.log(Props)
+          }}> <FiShoppingCart/></button>
+          }
+          {
+            IsPanier &&
+            <button style = {{marginLeft : 200,backgroundColor : "white",width : 60, fontSize :40 , width : 60, height : 75}} onClick ={()=>{
+              setIsPanier(false);
+              const action = {
+                type: "AjouterAuPanier",
+                value: Props.element,
+              };
+              Props.dispatch(action);
+            }}> <FaShoppingCart/></button>
+          }
         </div>
               
       
@@ -126,11 +176,46 @@ useEffect(()=>{
           Watch && 
           <Card
           hoverable
-          style={{ width: 350,borderRadius : "5",border :"solid 1px",margin : 30,marginTop : 90 }}
-          cover={<img alt="example"  src={UrlPhoto} />}
-        >
-          <text> {props.element.NomDuProduit}</text>
-          <text> {props.element.marque}</text>          
+          style={{ width: 433, height : 550,borderRadius : "5",border :"solid 1px",margin : 30,marginTop : 90 }}
+          cover={<img alt="example" style = {{width : 433 , height : 350}}   src={UrlPhoto} />}
+        > 
+         <div style ={{ display : 'flex', flexDirection : 'row' }}>
+           <div style = {{bottom : 10}}>
+           <text style ={{fontSize : 20 , color :'#002A6F'}}> <b>{props.element.marque}</b></text> 
+          <br/>
+          <text style ={{fontSize : 20,color :'#002A6F'}}> <b> <em>{props.element.NomDuProduit}</em></b></text>
+          <br/>
+          <text style ={{fontSize : 17}}> <b>Type : {props.element.Caracteristique.Type} </b></text> 
+          <br/>
+          <text style ={{fontSize : 17}}> <b>Prix : {props.element.Caracteristique.Prix} E</b></text> 
+          <br/>
+           </div>
+           {
+            !IsPanier &&
+          <button style = {{marginLeft : 200,backgroundColor : "white", width : 60,fontSize :40 , width : 60, height : 75}} onClick ={()=>{
+            setIsPanier(true);
+            
+            const action = {
+              type: "AjouterAuPanier",
+              value: Props.element,
+            };
+            Props.dispatch(action);
+            console.log(Props)
+          }}> <FiShoppingCart/></button>
+          }
+          {
+            IsPanier &&
+            <button style = {{marginLeft : 200,backgroundColor : "white",width : 60, fontSize :40 , width : 60, height : 75}} onClick ={()=>{
+              setIsPanier(false);
+              const action = {
+                type: "AjouterAuPanier",
+                value: Props.element,
+              };
+              Props.dispatch(action);
+            }}> <FaShoppingCart/></button>
+          }
+         </div>
+                   
       
         </Card>
           
