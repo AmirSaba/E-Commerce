@@ -2,6 +2,8 @@ import React, { useState,useEffect } from 'react';
 import axios from "axios";
 import ListeDesProduits from "./ListeDesProduits";
 import "./ConsulterLesProduits.css"
+import Header from './Header'
+import {database} from '../firebase'
 
 export default function ConsulterLesProduits() {
   const [Tab,setTab] = useState('');
@@ -11,8 +13,28 @@ export default function ConsulterLesProduits() {
 
  useEffect(() => {
  // Récupérer le nom de l'utilisateur
+
+ // Pour que lors de la suppression d'un produit ca s'affichera en realtime
+ database.ref("Produits").on('value',(Snapshot)=>{
+   if (Snapshot.val() !== null){
+    let y = Object.keys(Snapshot.val());
+    let x = Object.values(Snapshot.val());
+    if ( y != null ){
     
-     axios.get("http://localhost:5006/GetProducts/getList").then((res) => {
+      setKeysOfTab(y);
+      setValuesOfTab(x);
+      setBollen(true);
+    
+    
+     }
+   }
+
+ })
+    // Dans ce cas la suppression n'est pas en realtime(dans l'affichage)
+    // on doit realoder la page pour que le produit supprimer ne s'affiche plus
+
+    
+    /* axios.get("http://localhost:5006/GetProducts/getList").then((res) => {
       console.log(res.data);
     if ( res.data != null){
      let y = Object.keys(res.data);
@@ -29,13 +51,19 @@ export default function ConsulterLesProduits() {
     
      }}
     
-     })
+     })*/
     
  },[]);
   
     return (
+     <div> 
+       <Header /> 
+       <div style = {{display : "flex" , alignItems : 'center',justifyContent : 'center',marginTop : 50}}>
+       <h1 className ="TitreDeLaPage"> <b> <em>Consulter les Produits</em></b></h1>
+       </div>
+
       <div className = "NotreDiv">
-          
+
        
        <div className = "hlo">
           { 
@@ -93,6 +121,7 @@ export default function ConsulterLesProduits() {
      
 
         </div>
+      </div>
       </div>
     );
   }

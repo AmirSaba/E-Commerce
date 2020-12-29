@@ -79,7 +79,7 @@ export default function PageHome(props) {
   return (
     <div className = "DivP">
       
-         <Link to = "Panier">
+         <Link to = "Panier"> 
         <button style = {{width : 100,height : 100, marginTop : 90 ,fontSize : 50, marginLeft : 30,backgroundColor : "white"}}> <FaShoppingBasket/> </button>
         </Link>
        

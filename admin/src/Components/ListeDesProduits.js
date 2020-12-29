@@ -78,12 +78,13 @@ export default function ListeDesProduits(props) {
 
                         // Lancer la requete au backend ( nodeJs) pour suppression du produit de la base de données
 
-                        axios.delete("http://localhost:5002/SupprimerLaptop/Supprimer/" + ObjectToDeletePath).then((res) => { })
+                        axios.delete("http://localhost:5009/SupprimerLaptop/Supprimer/" + ObjectToDeletePath).then((res) => { })
 
                         // Suppression de l'image du laptop supprimer   
                         storage
                           .ref(`images/${Props.element.Caracteristique.Type + "'/'"}${Props.element.marque + "'/'"}${Props.element.NomDuProduit + ".jpg"}`)
                           .delete();
+                          window.location.reload();
 
                       }}> Supprimeer</button>
 
@@ -93,7 +94,7 @@ export default function ListeDesProduits(props) {
                     <br />
                     <text>Prix {props.element.Caracteristique.Prix} E</text>
                     <br />
-                    <text>_______________________________________________</text>
+                    <text>______________________________________________________________</text>
 
                   </div>
                 }
@@ -139,6 +140,8 @@ export default function ListeDesProduits(props) {
                         storage
                           .ref(`images/${Props.element.Caracteristique.Type + "'/'"}${Props.element.marque + "'/'"}${Props.element.NomDuProduit + ".jpg"}`)
                           .delete();
+                          window.location.reload();
+
 
                       }}
 
@@ -150,7 +153,7 @@ export default function ListeDesProduits(props) {
                     <text>Prix {props.element.Caracteristique.Prix} E</text>
 
                     <br />
-                    <text>_______________________________________________</text>
+                    <text>______________________________________________________________</text>
 
                   </div>
                 }
@@ -175,7 +178,7 @@ export default function ListeDesProduits(props) {
                     <text>{props.element.marque} {props.element.NomDuProduit}</text>
                     <br />
                     <text>Type {props.element.Caracteristique.TypeWatch}</text>
-                    <button style={{ marginLeft: 230, backgroundColor: "red" }}
+                    <button style={{ marginLeft: 265, backgroundColor: "red" }}
                       onClick={() => {
 
                         // Le Produit a supprimer 
@@ -188,12 +191,14 @@ export default function ListeDesProduits(props) {
 
                         // Lancer la requete au backend ( nodeJs) pour suppression du produit de la base de données
 
-                        axios.delete("http://localhost:5005/SupprimerWatch/Supprimer/" + ObjectToDeletePath).then((res) => { })
+                        axios.delete("http://localhost:5012/SupprimerWatch/Supprimer/" + ObjectToDeletePath).then((res) => { })
 
                         // Supprimer l'image de la montre supprimer
                         storage
                           .ref(`images/${Props.element.Caracteristique.Type + "'/'"}${Props.element.marque + "'/'"}${Props.element.NomDuProduit + ".jpg"}`)
                           .delete();
+                          window.location.reload();
+
 
                       }}
 
@@ -205,7 +210,7 @@ export default function ListeDesProduits(props) {
                     <br />
                     <text>Prix {props.element.Caracteristique.Prix} E</text>
                     <br />
-                    <text>_______________________________________________</text>
+                    <text>______________________________________________________________</text>
 
 
                   </div>

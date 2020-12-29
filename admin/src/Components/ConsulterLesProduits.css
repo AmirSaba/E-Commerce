@@ -1,4 +1,11 @@
 .NotreDiv {
-  margin-left: 400px;
-  margin-top: 200px;
+  display: "flex";
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+.hlo {
+  margin-top: 100px;
+  align-self: center;
+  margin-left: 690px;
 }

@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import axios from "axios";
 import { List, Avatar } from 'antd';
 import "./ListeDesCommandes.css"
-import Table2 from "./Table"
+import Table2 from "./Table";
+import Header from "./Header";
 
 // *************************************************//
 
@@ -28,8 +29,12 @@ componentDidMount(){
 }
     render() { 
         return ( 
+          <div>
+            <Header/>
+            <div style = {{display :'flex',alignItems :'center',justifyContent : 'center', marginTop : 50}}>
+            <h1 className ="TitreDeLaPage"> <b> <em>Consulter les Commandes</em></b></h1>
+            </div>
           <div className = "englobantepage">
-            <h1> La liste des commandes </h1>
             <div className = "EnglobanteListeDesCommandes">
               
               {
@@ -47,7 +52,7 @@ componentDidMount(){
             </div>
             </div>
 
-
+            </div>
 
         );
     }

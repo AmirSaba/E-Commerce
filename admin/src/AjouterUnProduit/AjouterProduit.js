@@ -6,6 +6,7 @@ import Laptop from '../images/laptop.jpg';
 import AjouterPc from "./AjouterPc";
 import AjouterWatch from "./AjouterWatch";
 import AjouterTel from "./AjouterTel";
+import Header from "../Components/Header"
 
 export default function AjouterProduit() {
     const [SLaptop, setSLaptop] = useState(false);
@@ -32,9 +33,10 @@ setSPhone(false);
 
 
   return (
-
+  <div> 
+    <Header/>
     <div className ="AjouterProduit">
-      <h1 className ="TitreDeLaPage"> Ajouter produit</h1>
+      <h1 className ="TitreDeLaPage"> <b> <em>Ajouter un produit</em></b></h1>
       <div className = "EnglobanteDesImages">
       <div className ="PourChaqueImage" onClick ={SelectionLaptop} >
         <img style ={{ width : 295,height :205, marginRight:70,marginLeft:70,marginTop : 70, }} src={Laptop} />
@@ -71,6 +73,7 @@ setSPhone(false);
           </div>
           }
       </div>
+    </div>
     </div>
   );
 }

@@ -10,7 +10,7 @@ router.get('/getList', async (req, res) => {
     firebase.database().ref("Produits").on('value',(Snapshot)=>{
         console.log(Snapshot.val());
         // Retourner l'objet contenant la liste des produits enregistés dans la base de données
-        res.json(Snapshot.val());
+       return res.json(Snapshot.val());
           })
       
 });

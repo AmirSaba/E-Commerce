@@ -1,0 +1,32 @@
+.Engo {
+  width: 100%;
+  position: relative;
+}
+.HeaderLink {
+  margin-left: 0px;
+  margin-right: 0px;
+  font-size: 26px;
+  color: rgb(238, 172, 172);
+  font-weight: 600;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding: 10px;
+  padding-top: 100%;
+  border: black 1px;
+  border-right: solid rgba(0, 0, 0, 0.19);
+  padding-bottom: 21px;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.5);
+}
+.bV {
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 9px 24px 0 rgba(0, 0, 0, 0.19);
+}
+.TitreOfficiel {
+  font-size: 30px;
+  font-weight: 400;
+  margin-left: 25px;
+  margin-right: 80px;
+  text-shadow: 3px 3px 4px rgb(134, 134, 134);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: black;
+}
