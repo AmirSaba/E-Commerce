@@ -7,7 +7,7 @@ require('firebase/database');
 
 
 router.get('/getList', async (req, res) => {
-    firebase.database().ref("Commandes").on('value',(Snapshot)=>{
+    firebase.database().ref("Commandes").once('value',(Snapshot)=>{
         console.log(Snapshot.val());
         // Retourner l'objet contenant la liste des produits enregistés dans la base de données
         res.json(Snapshot.val());
