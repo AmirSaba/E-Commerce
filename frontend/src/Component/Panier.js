@@ -4,9 +4,10 @@ import Header from './Header'
 import "./Panier.css"
 import TextField from '@material-ui/core/TextField';
 
+import {IoMdArrowRoundBack} from 'react-icons/io'
 import { List, Avatar } from 'antd';
 import 'antd/dist/antd.css'; 
-
+import {Link} from 'react-router-dom'
 import axios from "axios"
 
 
@@ -33,8 +34,11 @@ console.log(this.props);
 
   return ( 
       <div style  = {{display: "flex", flexDirection :'column' }} >
+        
+
        <Header/>
-       <div style ={{display : 'flex', justifyContent : 'center' , marginTop : 100, marginBottom : 100}}>
+       <div style ={{display : 'flex', justifyContent : 'center' , marginTop : 70, marginBottom : 100}}>
+
        <h1 > <b><em>Votre Panier</em></b></h1>
        </div>
        <div className = "PanierContent">
@@ -64,6 +68,7 @@ console.log(this.props);
 
            }
             <div className ="DivbuttonEnglobante">
+                <Link to ="PageHome">
             <button className = "Button" onClick = {()=>{
                 let ObjectDeReservation = {
                     ProduitCommander : this.state.Elements,
@@ -91,13 +96,15 @@ console.log(this.props);
                 if (this.state.send === true){
                 axios.post("http://localhost:5010/AjouterCommande/Ajout", ObjectDeReservation).then((res) => { })
                 axios.post("http://localhost:5011/SendMail/SendMail", ObjectDeReservation).then((res) => { })
-            
+                alert("Commande effectuer")
+                    
                 console.log('yes');
                 }
                 else { console.log('one is null or empty')}
 
 
-            }}> Commander </button>           
+            }}> Commander </button>    
+            </Link>       
             {
                 !this.state.send && <text style = {{color : 'red'}}> veuillez entrer un nombre valid </text>
             }

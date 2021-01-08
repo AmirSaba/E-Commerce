@@ -48,6 +48,8 @@ export default function AjouterPc() {
   const [Ram, setRam] = useState('');
   const [open2, setOpen2] = useState(false);
 
+  const [ProduitAjouter,setProduitAjouter] = useState(false);
+
 
 
   const handleClose = () => {
@@ -150,11 +152,24 @@ export default function AjouterPc() {
             }
             console.log (SendProduct);
             axios.post("http://localhost:5009/AjouterLaptop/Ajout", SendProduct).then((res) => { })
+            setProduitAjouter(false)
+
          
-        }}}
+        }
+        else {
+          setProduitAjouter(true)
+        }
+      
+      
+      
+      }}
       >
         Save
       </Button>
+      {
+        ProduitAjouter && 
+        <text style = {{color : 'green', fontSize : 17}}> veuillez remplir tous les champs</text>
+      }
 
     </form>
     {

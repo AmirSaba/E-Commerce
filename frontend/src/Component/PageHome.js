@@ -44,6 +44,7 @@ export default function PageHome(props) {
     setOpen(!open);
   };
   useEffect(() => {
+
     // Récupérer le nom de l'utilisateur
     let str = Props.CurrentUser.email;
     
@@ -70,6 +71,7 @@ export default function PageHome(props) {
 
       setNomUser(str);
 
+
      }
 
     })
@@ -94,6 +96,7 @@ export default function PageHome(props) {
         <Header CurrentUser = {Props}/>
         <div className = "Card">
           { 
+          
           
             Bollen &&  KeysOfTab.map((element,index)=>{
               let Tab2 = Object.values(ValuesOfTab);

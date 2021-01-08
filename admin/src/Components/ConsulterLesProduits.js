@@ -4,6 +4,9 @@ import ListeDesProduits from "./ListeDesProduits";
 import "./ConsulterLesProduits.css"
 import Header from './Header'
 import {database} from '../firebase'
+import { Empty, Button } from 'antd';
+import { Link } from "react-router-dom";
+
 
 export default function ConsulterLesProduits() {
   const [Tab,setTab] = useState('');
@@ -100,10 +103,33 @@ export default function ConsulterLesProduits() {
 
             })
           }
-          
-     
+       
 
         </div>
+        {
+            !Bollen &&
+              
+            <div>
+            <Empty
+          image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+          imageStyle={{
+            height: 160,
+          }}
+          description={
+            <span>
+              Aucun produit n'est crées pour le moment
+            </span>
+          }
+        >
+          <Link to="/">   
+       <Button type="primary">Create Now</Button>
+
+         </Link>
+        </Empty>
+            </div>
+
+          }
+     
       </div>
       </div>
     );

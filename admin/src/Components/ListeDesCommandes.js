@@ -5,6 +5,9 @@ import { List, Avatar } from 'antd';
 import "./ListeDesCommandes.css"
 import Table2 from "./Table";
 import Header from "./Header";
+import { Empty, Button } from 'antd';
+import { Link } from "react-router-dom";
+
 
 // *************************************************//
 
@@ -20,12 +23,19 @@ const data = [
 class ListeDesCommandes extends Component {
     constructor(props) {
         super (props)
-        this.state = { tab : []}
+        this.state = { tab : [], IsBollean : false}
     }
 
 componentDidMount(){
-    axios.get("http://localhost:5013/GetCommandes/getList").then((res) => { this.setState({ tab : Object.values(res.data)})})
+    axios.get("http://localhost:5013/GetCommandes/getList").then((res) => {
+      if ( res.data != null){
 
+      this.setState({ tab : Object.values(res.data), IsBollean : true})
+    
+
+      }})
+    
+    
 }
     render() { 
         return ( 
@@ -38,7 +48,7 @@ componentDidMount(){
             <div className = "EnglobanteListeDesCommandes">
               
               {
-              this.state.tab.map((element)=>{
+                 this.state.IsBollean && this.state.tab.map((element)=>{
                 return(
                   <Table2 data = {element}/>
 
@@ -46,7 +56,25 @@ componentDidMount(){
 
               })
             }
+                { !this.state.IsBollean && 
                 
+                  <div>
+                       <Empty
+                     image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+                     imageStyle={{
+                       height: 160,
+                     }}
+                     description={
+                       <span>
+                      Pas de commande effectuer pour le moment
+                       </span>
+                     }
+                   >
+                   </Empty>
+                       </div>
+                
+
+                }
 
 
             </div>

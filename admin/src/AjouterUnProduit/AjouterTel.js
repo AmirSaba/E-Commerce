@@ -44,6 +44,8 @@ export default function AjouterTel() {
   const [Ram, setRam] = useState('');
   const [open, setOpen] = useState(false);
 
+  const [ProduitAjouter,setProduitAjouter] = useState(false);
+
 
 
   const handleClose = () => {
@@ -116,13 +118,26 @@ export default function AjouterTel() {
               "QuantiteStock" :  QuantiteStock,
             }
             console.log (SendProduct);
-            axios.post("http://localhost:5004/AjouterPhone/Ajout", SendProduct).then((res) => { })
-         
-        }}}
+            axios.post("http://localhost:5004/AjouterPhone/Ajout", SendProduct).then((res) => {setProduitAjouter(true) })
+            setProduitAjouter(false)
+
+        }
+
+        
+      else {
+        setProduitAjouter(true)
+      }
+      
+      
+      
+      }}
       >
         Save
       </Button>
-      
+      {
+        ProduitAjouter && 
+        <text style = {{color : 'green', fontSize : 17}}> veuillez remplir tous les champs</text>
+      }
     </form>
     {
     <div 
