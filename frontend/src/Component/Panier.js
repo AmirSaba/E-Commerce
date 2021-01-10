@@ -51,13 +51,17 @@ console.log(this.props);
                 <div style = {{ display : "flex", flexDirection : "row"}}>
                 <h1 style = {{marginRight : 40 , width : 400 , color :'#002A6F' }}> <b> <em>Produit</em></b> : {zz} {element}</h1>
 
-                <TextField id="outlined-basic" label="Quantité" type ="number" variant="outlined" InputProps={{ inputProps: { min: 0, max: y} }} style ={{ width : 150}}
+                <TextField id="outlined-basic" label="Quantité" type ="number" variant="outlined" InputProps={{ inputProps: { min: 1, max: y} }} style ={{ width : 150}}
                 value = {this.state.Quantité[index]}
-                onChange = {(event)=> { let t = this.state.Quantité ;
-                                         t[index] = event.target.value;
-                                         let z = this.state.MarqueDesElements;
-                                         z[index] = zz;
-                                         this.setState({Quantité : t , MarqueDesElements : z})}}
+                onChange = {(event)=> {
+                if(event.target.value >0 && event.target.value != "0")
+                 { let t = this.state.Quantité ; t[index] = event.target.value;
+                     let z = this.state.MarqueDesElements; z[index] = zz; 
+                     this.setState({Quantité : t , MarqueDesElements : z})} 
+                else 
+                { let t = this.state.Quantité ; t[index] = 1; 
+                    let z = this.state.MarqueDesElements; z[index] = zz;
+                this.setState({Quantité : t , MarqueDesElements : z}) } }}
                 />
               
                 </div>
@@ -79,35 +83,21 @@ console.log(this.props);
 
                 console.log(ObjectDeReservation)
 
-                this.state.Quantité.map((element)=>{
-
-                    if (element === 0 )
-                    {
-                        this.setState({send : false})
-                    }
-                })
-                if (this.state.Quantité.length !== this.props.ElementDuPanier.length)
+               
+                if (this.state.Quantité.length === this.props.ElementDuPanier.length)
                 {
-                    this.setState({send : false})
-                    console.log(this.state.send)
-
-                }
-                else { this.setState({send : true})}
-                if (this.state.send === true){
                 axios.post("http://localhost:5010/AjouterCommande/Ajout", ObjectDeReservation).then((res) => { })
                 axios.post("http://localhost:5011/SendMail/SendMail", ObjectDeReservation).then((res) => { })
                 alert("Commande effectuer")
                     
                 console.log('yes');
                 }
-                else { console.log('one is null or empty')}
+                else { alert("Error : Votre Commande n'a pas été effectuer veuillez remplir tous les champs")}
 
 
             }}> Commander </button>    
             </Link>       
-            {
-                !this.state.send && <text style = {{color : 'red'}}> veuillez entrer un nombre valid </text>
-            }
+            
             </div>
         </div>
       </div>
